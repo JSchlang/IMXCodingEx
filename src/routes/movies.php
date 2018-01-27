@@ -205,68 +205,6 @@ $app -> get('/api/options', function(Request $request, Response $response){
 });
 
 
-// $app -> get('/api/firstShowings', function(Request $request, Response $response){
-// 	$sql = "SELECT * from movies";
-// 	try{
-// 		$db = new db();
-// 		$db = $db->connect();
-
-// 		$stmt = $db->query($sql);
-// 		$movies = $stmt->fetchAll(PDO::FETCH_OBJ);
-// 		$db = null;
-// 		echo json_encode($movies);
-// 	}catch(PDOException $e){
-// 		echo $e->getMessage();
-// 	}
-
-// 	$sql = "SELECT * from times";
-// 	try{
-// 		$db = new db();
-// 		$db = $db->connect();
-
-// 		$stmt = $db->query($sql);
-// 		$times = $stmt->fetchAll(PDO::FETCH_OBJ);
-// 		$db = null;
-// 		echo json_encode($times);
-// 	}catch(PDOException $e){
-// 		echo $e->getMessage();
-// 	}
-
-// 	$sql = "SELECT * from screens";
-// 	try{
-// 		$db = new db();
-// 		$db = $db->connect();
-
-// 		$stmt = $db->query($sql);
-// 		$screens = $stmt->fetchAll(PDO::FETCH_OBJ);
-// 		$db = null;
-// 		echo json_encode($screens);
-// 	}catch(PDOException $e){
-// 		echo $e->getMessage();
-// 	}
-
-
-// 	$sql = "SELECT * from times order by movie_id asc";
-// 	try{
-// 		$db = new db();
-// 		$db = $db->connect();
-
-// 		$stmt = $db->query($sql);
-// 		$times = $stmt->fetchAll(PDO::FETCH_OBJ);
-// 		$db = null;
-// 		echo json_encode($times);
-// 	}catch(PDOException $e){
-// 		echo $e->getMessage();
-// 	}
-
-
-
-
-
-
-
-
-//});
 
 
 ?>

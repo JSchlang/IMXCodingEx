@@ -1,0 +1,16 @@
+To run I used xampp
+I used slim framework
+
+imxcodingex/hello/{var}: homepage
+imxcodingex/api/movies":"GET: displays all movies
+imxcodingex/api/movies/{id}":"GET: Displays the movie name of the id
+imxcodingex/api/movies/add":"POST: Given a json with just movie name will add the movie and increment the id
+imxcodingex/api/screens/add":"POST: Given a json of screen_type will add a screen and increment the id
+imxcodingex/api/screen/update/{screen_id}":"PUT: Given a json with screen_type will update screen type
+imxcodingex/api/times/{id}: GET: gets movies times by ID
+imxcodingex/api/options":"Displays this
+to test":"I used the chrome extension resteasy to test my PUTS and POSTS URIs. However some of them can be tested in the app i created.
+
+NOTE:
+
+I was unable to complete the query tables program, validate inputs or I feel handle the HTTP Status codes correctly.

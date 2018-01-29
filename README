@@ -5,9 +5,9 @@ Required:
 2) Install slim php framework : https://www.slimframework.com/docs/start/installation.html
 3) Install xampp
 
-To run:
-1) Clone the repository
-2) Move the database file "movies_db2" to your mysql DB Location.
+Configurations:
+1) Clone the repository to the folder "htdocs" in the xampp folder.
+2) Replace data folder in xampp/mysql with the data folder in the repository.
 3) Uncomment "NameVirtualHost *:80"
    and add
 		<VirtualHost *:80>
@@ -22,19 +22,32 @@ To run:
 	to xampp/apache/conf/extra/httpd-vhosts.conf 
 4) Add "127.0.0.1 IMXCodingEx" to C:\Windows\System32\drivers\etc\host
 5) Start xampp server and mysql
-6) Open Chrome and go to "http://imxcodingex/hello/there"
+6) Open Chrome and go to "http://imxcodingex/populatedb" to populate or reset the DB Data
+7) Open Chrome and go to "http://imxcodingex/" to start using the site
+
+Basic function of the site:
+1) Click a table row to view it's other movie times or add to add a movie.
+2) Press back button to go back to home
+3) Add a movie: Only fill out Movie name on form then press submit
+4) Add a new screen: Only fill out screen number on form then press submit
+5) Update a screen's movie format: fill out screen number and movie format
+6) Add a showtime to a movie and screen: Fill out whole form(filling out format will update the  film's format).
 
 to test: 
 1) Chrome extension "resteasy" to test
    Valid URIs are:
-	"imxcodingex/hello/{var}": homepage
+	"imxcodingex/": homepage
 	"imxcodingex/api/movies":"GET: displays all movies
 	"imxcodingex/api/movies/{id}":"GET: Displays the movie name of the id
 	"imxcodingex/api/movies/add":"POST: Given a json with just movie name will add the movie and increment the id
+	"imxcodingex/api/movies/update/{id}: Given a json with movie_name will update the movie name
 	"imxcodingex/api/screens/add":"POST: Given a json of screen_type will add a screen and increment the id
 	"imxcodingex/api/screen/update/{screen_id}":"PUT: Given a json with screen_type will update screen type
 	"imxcodingex/api/times/{id}: GET: gets movies times by ID
-	"imxcodingex/api/options":"Displays this
+	"imxcodingex/api/times/add": POST: Given a json of what_time, screen_id and movie_id will add a show time
+	"imxcodingex/api/options": Displays this
+	"imxcodingex/populatedb": Resets and populates the database with testing data
 
 NOTE:
-I was unable to complete the query tables program, validate inputs or I feel handle the HTTP Status codes correctly.
+
+I would have liked to change my form structure. I'm not terribly happy with it. 

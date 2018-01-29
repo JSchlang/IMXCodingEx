@@ -6,13 +6,6 @@ require '../vendor/autoload.php';
 require '../src/config/db.php';
 
 $app = new \Slim\App;
-$app->get('/hello/{name}', function (Request $request, Response $response, array $args) {
-    //$name = $args['name'];
-    //$response->getBody()->write("Hello, $name");
-    //return $response;
-});
-
-
 
 //Movie routes
 require '../src/routes/movies.php';
@@ -24,16 +17,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Movies Times</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src= "https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-  <script src= "https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-  <script src= "https://cdn.datatables.net/select/1.2.4/js/dataTables.select.min.js"></script>
+	<title>Movies Times</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src= "https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script src= "https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+	<script src= "https://cdn.datatables.net/select/1.2.4/js/dataTables.select.min.js"></script>
 </head>
 <body>
 
@@ -44,7 +37,6 @@ $app->run();
 		<th>Movie</th>
 	</tr></thead>
 </table>
-<button id= "add" type="button" class="btn btn-primary">Add</button>
 </div>
 
 <div classs = "container-fluid" id = "table2">
@@ -57,31 +49,33 @@ $app->run();
 		<th>Time</th>
 	</tr></thead>
 </table>
-	<button id= "go_back" type="button" class="btn btn-primary">Back</button>
-	<button id= "add2" type="button" class="btn btn-primary">Add</button>
 </div>
 
-<div classs = "container-fluid" id = "form_add">
-<form  name = "theForm" method="POST">
-  <div class="form-group">
-    <label for="form_madd">Movie name</label>
-    <input type="text" class="form-control" id="form_madd" aria-describedby="movie_note" placeholder="Enter movie name">
-    <small id="movie_note" class="form-text text-muted">Max 30 characters</small>
-  </div>
-  <div class="form-group">
-    <label for="form_screennum">Screen number</label>
-    <input type="text" class="form-control" id="form_screennum" placeholder="Leave blank if new screen">
-  </div>
-  <div class="form-group">
-    <label for="form_screenfmat">Movie format</label>
-    <input type="text" class="form-control" id="form_screenfmat" placeholder="Standard, xd, imax, etc..">
-  </div>
+<button id= "go_back" type="button" class="btn btn-primary">Back</button>
+<button id= "add" type="button" class="btn btn-primary">Add</button>
+
+<div class = "container-fluid" id = "form_add">
+	<form  name = "theForm" method="POST">
+		<div class="form-group">
+    		<label for="form_madd">Movie name</label>
+    		<input type="text" class="form-control" id="form_madd" aria-describedby="movie_note" placeholder="Enter movie name">
+    		<small id="movie_note" class="form-text text-muted">Max 30 characters</small>
+  		</div>
+  	<div class="form-group">
+    	<label for="form_screennum">Screen number</label>
+    	<input type="text" class="form-control" id="form_screennum" placeholder="Leave blank if new screen">
+  	</div>
+  	<div class="form-group">
+    	<label for="form_screenfmat">Movie format</label>
+    	<input type="text" class="form-control" id="form_screenfmat" placeholder="Standard, xd, imax, etc..">
+  	</div>
     <div class="form-group">
-    <label for="form_time">Movie time</label>
-    <input type="text" class="form-control" id="form_time" placeholder="hh:mm:ss">
-  </div>
-  <button type="button" class="btn btn-primary" id="form_submit">Submit</button>
-</form>
+    	<label for="form_time">Movie time</label>
+    	<input type="text" class="form-control" id="form_time" placeholder="hh:mm:ss">
+    	<small id="movie_note" class="form-text text-muted">Whole form required. Leave screen blank if new screen</small>
+  	</div>
+  	<button type="button" class="btn btn-primary" id="form_submit">Submit</button>
+	</form>
 </div>
 
   <script id="source" language="javascript" type="text/javascript">
@@ -90,6 +84,8 @@ $app->run();
 		var toHide = document.getElementById("table2");
 		toHide.style.display = "none";
 		toHide = document.getElementById("form_add");
+		toHide.style.display = "none";
+		toHide = document.getElementById("go_back");
 		toHide.style.display = "none";
     	$('#movies2').DataTable({
     		select: true,
@@ -110,6 +106,8 @@ $app->run();
 		var toHide = document.getElementById("table1");
 		toHide.style.display = "none";
 		toHide = document.getElementById("table2");
+		toHide.style.display = "block";
+		toHide = document.getElementById("go_back");
 		toHide.style.display = "block";
 		var table = $('#movies2').DataTable();
     	var id = table.row(this).data().movie_id;
@@ -174,10 +172,10 @@ $app->run();
 
 		//if I want to add just a time there should exist a movie and a screen
 		//OR both have just been added
-		var what_time = document.getElementById('form_time');
-		var what_time = what_time.value;
+		 var what_time = document.getElementById('form_time');
+		 var what_time = what_time.value;
 		console.log(what_time);
-		if(movie_name != ""){
+		if(what_time != "" && movie_name != ""){
 			$.ajax({
 				type: 'POST',
 				url: "/api/times/add",
@@ -189,42 +187,26 @@ $app->run();
 					  }
 			});
 		}
-
-
 		console.log(movie_name, screen_id, screen_type, what_time);
-
-
 	});
 
 	//detect add button clicks and call hide_form()
-	$('#add').on('click', function(){
-		console.log("clicked add");
-		hideForm();
-	});
+		$('#add').on('click', function(){
+			console.log("clicked add");
+			hide(document.getElementById("form_add"));
+		});
 
-	$('#add2').on('click', function(){
-		console.log("clicked add");
-		hideForm();	
-	});
-
-	//hides the form
-	function hideForm(){
-				//location.reload();
-		toHide = document.getElementById("form_add");
-		if(toHide.style.display === "none"){
-			toHide.style.display = "block";
+		//hides the form
+		function hide(toHide){
+			//location.reload();
+			if(toHide.style.display === "none"){
+				toHide.style.display = "block";
+			}
+			else{
+				toHide.style.display = "none";
+			}
 		}
-		else{
-			toHide.style.display = "none";
-		}
-	}
-
-
-
-
-
 	});
-
 </script>
 
 </body>
